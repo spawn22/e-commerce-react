@@ -13,6 +13,10 @@ function ShoppingCartContextProvider({ children }) {
 
   const [cartProducts, setCartProducts] = useState([]);
 
+  const [order, setOrder] = useState([]);
+
+  
+
   const openDetailCart = () => setCartDetailOpen(true);
   const closeDetailCart = () => setCartDetailOpen(false);
 
@@ -34,6 +38,8 @@ function ShoppingCartContextProvider({ children }) {
         openCheckoutCart,
         closeCheckoutCart,
         cartCheckoutOpen,
+        order,
+        setOrder,
       }}
     >
       {children}

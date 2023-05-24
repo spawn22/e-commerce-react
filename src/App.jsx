@@ -22,11 +22,15 @@ const AppRoutes = () => {
       element: <MyAccount />,
     },
     {
-      path: "/order",
+      path: "/myorder",
       element: <MyOrder />,
     },
     {
-      path: "/orders",
+      path: "/myorder/last",
+      element: <MyOrder />,
+    },
+    {
+      path: "/myorders",
       element: <MyOrders />,
     },
     {

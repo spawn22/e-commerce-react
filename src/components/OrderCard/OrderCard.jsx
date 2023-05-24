@@ -1,7 +1,7 @@
 import { AiOutlineClose } from "react-icons/ai";
 
 // eslint-disable-next-line react/prop-types
-function OrderCard({ id, title, image, price, handleDelete }) {
+function OrderCard({ id, title, image, price, handleDelete, }) {
   return (
     <div className="flex justify-between item-center mt-5">
       <div className="flex item-center gap-2">
@@ -16,10 +16,13 @@ function OrderCard({ id, title, image, price, handleDelete }) {
       </div>
       <div className="flex item-center gap-2">
         <p className="text-lg font-bold text-black">${price}</p>
-        <AiOutlineClose
-          onClick={() => handleDelete(id)}
-          className="text-xl text-red-500 cursor-pointer"
-        />
+
+        {handleDelete ? (
+          <AiOutlineClose
+            onClick={() => handleDelete(id)}
+            className="text-xl text-red-500 cursor-pointer"
+          />
+        ) : null}
       </div>
     </div>
   );

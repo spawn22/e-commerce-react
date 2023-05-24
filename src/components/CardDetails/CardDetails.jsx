@@ -11,7 +11,7 @@ function CardDetails() {
       } w-[400px] h-[calc(100vh-68px)] top-[68px] flex flex-col fixed bg-white right-0  border border-black rounded-lg`}
     >
       <div className="flex justify-between items-center ">
-        <h2 className="font-medium text-xl">Detail</h2>
+        <h2 className="font-medium text-xl ml-44">Detail</h2>
         <div className="cursor-pointer text-1xl mr-1" onClick={context.closeDetailCart}>
           <AiOutlineClose />
         </div>
