@@ -2,16 +2,38 @@ import { createContext, useState } from "react";
 import useFetchFakeStore from "../hooks/useFetchFakeStore";
 export const CartContext = createContext();
 
+// export const initializeLocalStorage = () => {
+//   const accountLocalStorage = localStorage.getItem("account");
+//   const signOutInLocalStorage = localStorage.getItem("signOut");
+//   let parsedAccount;
+//   let parsedSignOut;
+
+//   if (!accountLocalStorage) {
+//     localStorage.setItem("account", JSON.stringify({}));
+//     parsedAccount = {};
+//   } else {
+//     parsedAccount = JSON.parse(accountLocalStorage);
+//   }
+
+//   if(!signOutInLocalStorage){
+//     localStorage.setItem("signOut", JSON.stringify({}));
+//     parsedSignOut = {};
+//   }else{
+//     parsedSignOut = JSON.parse(signOutInLocalStorage);
+//   }
+// }
+
 // eslint-disable-next-line react/prop-types
 function ShoppingCartContextProvider({ children }) {
   const { data, loading, error } = useFetchFakeStore();
 
+  const [acc, setAcc] = useState({});
   
-
+  const [signOut, setSignOut] = useState(false);
 
   const [cartDetailOpen, setCartDetailOpen] = useState(false);
   const [cartCheckoutOpen, setCheckoutOpen] = useState(false);
-  
+
   const [count, setCount] = useState(0);
 
   const [products, setProducts] = useState({});
@@ -23,7 +45,7 @@ function ShoppingCartContextProvider({ children }) {
   const [search, setSearch] = useState("");
 
   const [category, setCategory] = useState("all");
-  
+
   const openDetailCart = () => setCartDetailOpen(true);
   const closeDetailCart = () => setCartDetailOpen(false);
 
@@ -54,6 +76,10 @@ function ShoppingCartContextProvider({ children }) {
         setSearch,
         category,
         setCategory,
+        signOut,
+        setSignOut,
+        acc,
+        setAcc,
       }}
     >
       {children}

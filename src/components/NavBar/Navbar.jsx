@@ -5,6 +5,18 @@ import { CartContext } from "../../Context/ShoppingCartContextProvider";
 function Navbar() {
   const activeStyle = "underline text-black";
   const context = useContext(CartContext);
+  
+  const signOut = localStorage.getItem("sign-out");
+  const parsedSignOut = JSON.parse(signOut);
+  const isUserSignOut = context.signOut || parsedSignOut;
+
+  const handleSignOut = () => {
+    const stringifiedSignOut = JSON.stringify(true);
+    localStorage.setItem("signOut", stringifiedSignOut);
+    context.setSignOut(true);
+    window.location.reload();
+  };
+
   // eslint-disable-next-line react/prop-types
   const NavItem = ({ children, to }) => (
     <li>
@@ -16,6 +28,35 @@ function Navbar() {
       </NavLink>
     </li>
   );
+
+  const renderReview = () => {
+    if (isUserSignOut) {
+      return (
+        <li>
+          <NavLink to="/sign-in" onClick={() => handleSignOut()}>
+            Sign out
+          </NavLink>
+        </li>
+      );
+    } else {
+      return (
+        <>
+          <li className="text-red-500">{context.acc.username}</li>
+          <li>
+            <NavItem to="/myorders">My Orders</NavItem>
+          </li>
+          <li>
+            <NavItem to="/account">My Account</NavItem>
+          </li>
+          <li>
+            <NavItem to="/sign-in">
+              <button onClick={() => handleSignOut()}>Sign out</button>
+            </NavItem>
+          </li>
+        </>
+      );
+    }
+  };
 
   return (
     <nav className="flex justify-between items-center fixed z-10 w-full py-5 px-8 text-lg font-normal top-0 flex-wrap">
@@ -60,16 +101,7 @@ function Navbar() {
         </li>
       </ul>
       <ul className="flex items-center gap-3">
-        <li className="text-red-500">lucasruiz199@gmail.com</li>
-        <li>
-          <NavItem to="/myorders">My Orders</NavItem>
-        </li>
-        <li>
-          <NavItem to="/account">My Account</NavItem>
-        </li>
-        <li>
-          <NavItem to="/signin">Sign In</NavItem>
-        </li>
+        {renderReview()}
         <li className="text-xl flex justify-between gap-1 items-center">
           <AiOutlineShoppingCart
             onClick={context.openCheckoutCart}

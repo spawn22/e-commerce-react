@@ -7,6 +7,10 @@ import CardDetails from "../../components/CardDetails/CardDetails";
 function Home() {
   const context = useContext(CartContext);
 
+  if (!Object.keys(context.acc).length) {
+    return <p className="text-center text-2xl font-bold text-red-500 mt-10">Inicia sesión para ver más detalles</p>;
+  }
+  
   if (context.loading) return <p>Loading...</p>;
   if (context.error) return <p>Error: {context.error}</p>;
 
@@ -18,7 +22,7 @@ function Home() {
   const filteredData = filteredByCategory.filter((product) =>
     product.title.toLowerCase().includes(context.search.toLowerCase())
   );
-  
+
   return (
     <Layout>
       <div className="flex items-center justify-center gap-2  rounded-md border-2 border-black">
