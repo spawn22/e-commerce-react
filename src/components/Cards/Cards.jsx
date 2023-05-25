@@ -43,7 +43,7 @@ function Cards({ data }) {
   };
 
   return (
-    <div className="bg-white cursor-pointer w-full h-full  rounded-lg flex justify-center align-middle flex-wrap gap-28 mt-56">
+    <div className="bg-white cursor-pointer w-full h-full  rounded-lg flex justify-center items-center  flex-wrap gap-28 mt-10">
       {/* eslint-disable-next-line react/prop-types */}
       {data.map((product) => (
         <div
@@ -52,7 +52,7 @@ function Cards({ data }) {
           onClick={() => showProducts(product)}
         >
           <figure className="relative mb-2 w-full h-4/5">
-            <span className="absolute bottom-0 left-0 bg-white text-black text-xs px-3 py-0.5 rounded-lg m-2">
+            <span className="absolute bottom-0 left-0 bg-white text-black text-xs px-3 py-0.5 rounded-lg m-2 font-semibold">
               {product.title}
             </span>
             <img

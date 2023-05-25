@@ -1,9 +1,14 @@
 import { createContext, useState } from "react";
-
+import useFetchFakeStore from "../hooks/useFetchFakeStore";
 export const CartContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 function ShoppingCartContextProvider({ children }) {
+  const { data, loading, error } = useFetchFakeStore();
+
+  
+
+
   const [cartDetailOpen, setCartDetailOpen] = useState(false);
   const [cartCheckoutOpen, setCheckoutOpen] = useState(false);
   
@@ -15,8 +20,10 @@ function ShoppingCartContextProvider({ children }) {
 
   const [order, setOrder] = useState([]);
 
-  
+  const [search, setSearch] = useState("");
 
+  const [category, setCategory] = useState("all");
+  
   const openDetailCart = () => setCartDetailOpen(true);
   const closeDetailCart = () => setCartDetailOpen(false);
 
@@ -40,6 +47,13 @@ function ShoppingCartContextProvider({ children }) {
         cartCheckoutOpen,
         order,
         setOrder,
+        data,
+        loading,
+        error,
+        search,
+        setSearch,
+        category,
+        setCategory,
       }}
     >
       {children}

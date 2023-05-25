@@ -21,7 +21,7 @@ function MyOrder() {
 
   return (
     <Layout>
-      <div className="overflow-y-auto flex-1 mt-20 w-[25%] mx-auto ">
+      <div className="overflow-y-auto flex-1 mt-32 w-auto mx-auto  ">
         <div className="flex justify-center items-center mb-10 text-3xl font-bold text-gray-700 gap-5 mr-20">
           <Link to="/myorders">
             <BsFillArrowLeftCircleFill className="text-2xl cursor-pointer mr-10" />

@@ -3,8 +3,8 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useContext } from "react";
 import { CartContext } from "../../Context/ShoppingCartContextProvider";
 function Navbar() {
-  const activeStyle = "underline text-blue-500";
-  const context = useContext(CartContext)
+  const activeStyle = "underline text-black";
+  const context = useContext(CartContext);
   // eslint-disable-next-line react/prop-types
   const NavItem = ({ children, to }) => (
     <li>
@@ -18,7 +18,7 @@ function Navbar() {
   );
 
   return (
-    <nav className="flex justify-between items-center fixed z-10 w-full py-5 px-8 text-lg font-normal top-0">
+    <nav className="flex justify-between items-center fixed z-10 w-full py-5 px-8 text-lg font-normal top-0 flex-wrap">
       <ul className="flex items-center gap-3">
         <li className="font-semibold text-lg ">
           <NavItem to="/" activeClassName={activeStyle}>
@@ -26,22 +26,37 @@ function Navbar() {
           </NavItem>
         </li>
         <li>
-          <NavItem to="/all">All</NavItem>
+          <NavItem to="/all">
+            <button onClick={() => context.setCategory("all")}>All</button>
+          </NavItem>
         </li>
         <li>
-          <NavItem to="/cloth">Cloth</NavItem>
+          <NavItem to="/men-clothing">
+            <button onClick={() => context.setCategory("men's clothing")}>
+              Man Cloth
+            </button>
+          </NavItem>
         </li>
         <li>
-          <NavItem to="/electronics">Electronics</NavItem>
+          <NavItem to="/electronics">
+            <button onClick={() => context.setCategory("electronics")}>
+              Electronics
+            </button>
+          </NavItem>
         </li>
         <li>
-          <NavItem to="/furnitures">Furnitures</NavItem>
+          <NavItem to="/jewelery">
+            <button onClick={() => context.setCategory("jewelery")}>
+              Jewelery
+            </button>
+          </NavItem>
         </li>
         <li>
-          <NavItem to="/toys">Toys</NavItem>
-        </li>
-        <li>
-          <NavItem to="/others">Others</NavItem>
+          <NavItem to="/women-clothing">
+            <button onClick={() => context.setCategory("women's clothing")}>
+              Women Cloth
+            </button>
+          </NavItem>
         </li>
       </ul>
       <ul className="flex items-center gap-3">
@@ -56,7 +71,10 @@ function Navbar() {
           <NavItem to="/signin">Sign In</NavItem>
         </li>
         <li className="text-xl flex justify-between gap-1 items-center">
-          <AiOutlineShoppingCart onClick={context.openCheckoutCart} className="cursor-pointer"/>
+          <AiOutlineShoppingCart
+            onClick={context.openCheckoutCart}
+            className="cursor-pointer"
+          />
           {context.count}
         </li>
       </ul>
