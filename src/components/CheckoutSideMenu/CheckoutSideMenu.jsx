@@ -6,6 +6,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { totalPrice } from "../../utils/totalPrice";
 function CheckoutSideMenu() {
   const context = useContext(CartContext);
+  
   const date = new Date();
   const handleDelete = (id) => {
     const filteredProducts = context.cartProducts.filter(
@@ -17,6 +18,7 @@ function CheckoutSideMenu() {
 
   const handleCheckout = () => {
     const orderToAdd = {
+      id: Math.random().toString(16).slice(2),
       date: date.toLocaleDateString('es-Es'),
       products: context.cartProducts,
       totalProducts: context.cartProducts.length,

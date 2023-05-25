@@ -47,7 +47,7 @@ function Navbar() {
       <ul className="flex items-center gap-3">
         <li className="text-red-500">lucasruiz199@gmail.com</li>
         <li>
-          <NavItem to="/orders">My Orders</NavItem>
+          <NavItem to="/myorders">My Orders</NavItem>
         </li>
         <li>
           <NavItem to="/account">My Account</NavItem>

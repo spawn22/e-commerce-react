@@ -4,7 +4,6 @@ import {  AiOutlineCheck } from "react-icons/ai";
 // eslint-disable-next-line react/prop-types
 function Cards({ data }) {
   const context = useContext(CartContext);
-
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
