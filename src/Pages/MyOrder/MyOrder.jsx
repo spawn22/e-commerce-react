@@ -4,6 +4,7 @@ import OrderCard from "../../components/OrderCard/OrderCard";
 import { CartContext } from "../../Context/ShoppingCartContextProvider";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
+import Navbar from "../../components/NavBar/Navbar";
 
 function MyOrder() {
   const context = useContext(CartContext);
@@ -21,7 +22,8 @@ function MyOrder() {
 
   return (
     <Layout>
-      <div className="overflow-y-auto flex-1 mt-32 w-auto mx-auto  ">
+      <Navbar/>
+      <div className="overflow-y-auto flex-1 mt-10 w-auto mx-auto  ">
         <div className="flex justify-center items-center mb-10 text-3xl font-bold text-gray-700 gap-5 mr-20">
           <Link to="/myorders">
             <BsFillArrowLeftCircleFill className="text-2xl cursor-pointer mr-10" />

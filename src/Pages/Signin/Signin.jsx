@@ -5,16 +5,11 @@ function Signin({ handleRegistered }) {
   // const context = useContext(CartContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  // const account = localStorage.getItem("account");
-  // const parsedAccount = JSON.parse(account)
-
-  // const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true;
-  // const noAccountInLocalState = context.account ? Object.keys(context.account).length === 0 : true;
-  // const hasUserAccount = noAccountInLocalStorage || noAccountInLocalState;
+  const [name, setName] = useState("");
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
+    localStorage.setItem("name", name);
     localStorage.setItem("username", username);
     localStorage.setItem("password", password);
     handleRegistered(username);
@@ -27,10 +22,21 @@ function Signin({ handleRegistered }) {
     >
       <h1 className="font-medium text-xl text-center mb-6 w-80">Registro</h1>
       <div className="flex flex-col  items-center justify-center border p-4 rounded-lg">
-        <label className="font-semibold text-sm mb-2 w-full">
-          Usuario:
+      <label className="font-semibold text-sm mb-2 w-full">
+          Name:
           <input
             type="text"
+            className="border border-black rounded-lg mt-1 w-full px-3 py-2"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+
+        <br />
+        <label className="font-semibold text-sm mb-2 w-full">
+          Email:
+          <input
+            type="email"
             className="border border-black rounded-lg mt-1 w-full px-3 py-2"
             value={username}
             onChange={(e) => setUsername(e.target.value)}

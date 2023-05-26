@@ -3,7 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import { CartContext } from "../../Context/ShoppingCartContextProvider";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-
+import Navbar from "../../components/NavBar/Navbar";
 function MyOrders() {
   const context = useContext(CartContext);
 
@@ -11,7 +11,8 @@ function MyOrders() {
 
   return (
     <Layout>
-      <div className="overflow-y-auto flex-1 mt-32 w-auto mx-auto ">
+      <Navbar/>
+      <div className="overflow-y-auto flex-1 mt-10 w-auto mx-auto ">
       <div className="flex justify-center flex-1 ">
         <h1 className="text-lg font-bold">My Orders</h1>
       </div>

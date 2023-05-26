@@ -12,7 +12,7 @@ function OrderCard({ id, title, image, price, handleDelete, }) {
             alt={title}
           />
         </figure>
-        <p className="text-sm font-light flex-wrap w-auto">{title}</p>
+        <p className="text-lg font-light flex-wrap w-44">{title}</p>
       </div>
       <div className="flex item-center gap-2">
         <p className="text-lg font-bold text-black">${price}</p>

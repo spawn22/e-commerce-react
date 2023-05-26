@@ -11,11 +11,13 @@ function Login({ handleLoggedIn }) {
     // Obtener datos del usuario desde localStorage
     const storedUsername = localStorage.getItem("username");
     const storedPassword = localStorage.getItem("password");
-    console.log("Username: ", storedUsername, "Password: ", storedPassword);
+    const storedName = localStorage.getItem("name");
+   
     if (storedUsername === username && storedPassword === password) {
       context.setAcc({
         username: storedUsername,
         password: storedPassword,
+        name: storedName,
       });
       handleLoggedIn(username);
     } else {
@@ -31,9 +33,9 @@ function Login({ handleLoggedIn }) {
       <h1 className="font-medium text-xl text-center mb-6 w-80">Login</h1>
       <div className="flex flex-col  items-center justify-center border p-4 rounded-lg">
         <label className="font-semibold text-sm mb-2 w-full">
-          Usuario:
+          Email:
           <input
-            type="mail"
+            type="email"
             className="border border-black rounded-lg mt-1 w-full px-3 py-2"
             value={username}
             onChange={(e) => setUsername(e.target.value)}

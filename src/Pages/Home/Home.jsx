@@ -4,6 +4,7 @@ import { CartContext } from "../../Context/ShoppingCartContextProvider";
 import Cards from "../../components/Cards/Cards";
 import { FiSearch } from "react-icons/fi";
 import CardDetails from "../../components/CardDetails/CardDetails";
+import Navbar from "../../components/NavBar/Navbar";
 function Home() {
   const context = useContext(CartContext);
 
@@ -25,10 +26,11 @@ function Home() {
 
   return (
     <Layout>
+      <Navbar />
       <div className="flex items-center justify-center gap-2  rounded-md border-2 border-black">
         <FiSearch />
         <input
-          className=" outline-none"
+          className=" bg-transparent text-black  outline-none"
           type="text"
           placeholder="Search..."
           onChange={(e) => context.setSearch(e.target.value)}
@@ -40,7 +42,7 @@ function Home() {
         </p>
       ) : (
         <>
-          <div className="grid gap-4 grid-cols-2 w-full h-full   ml-[55rem]  ">
+          <div className="flex justify-center flex-wrap items-center gap-5  w-full h-full max-w-5xl  ">
             <Cards data={filteredData} key={context.data.id} />
           </div>
         </>

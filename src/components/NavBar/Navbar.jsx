@@ -1,11 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useContext } from "react";
 import { CartContext } from "../../Context/ShoppingCartContextProvider";
 function Navbar() {
   const activeStyle = "underline text-black";
+  const navigate = useNavigate();
   const context = useContext(CartContext);
-  
+  const userName = localStorage.getItem("name");
   const signOut = localStorage.getItem("sign-out");
   const parsedSignOut = JSON.parse(signOut);
   const isUserSignOut = context.signOut || parsedSignOut;
@@ -14,6 +15,7 @@ function Navbar() {
     const stringifiedSignOut = JSON.stringify(true);
     localStorage.setItem("signOut", stringifiedSignOut);
     context.setSignOut(true);
+    navigate("/");
     window.location.reload();
   };
 
@@ -30,7 +32,7 @@ function Navbar() {
   );
 
   const renderReview = () => {
-    if (isUserSignOut) {
+    if (!isUserSignOut) {
       return (
         <li>
           <NavLink to="/sign-in" onClick={() => handleSignOut()}>
@@ -41,7 +43,7 @@ function Navbar() {
     } else {
       return (
         <>
-          <li className="text-red-500">{context.acc.username}</li>
+          <li className="text-black flex justify-center items-center gap-3 text-light">Bienvenido <p className="text-red-600 font-semibold">{userName}</p></li>
           <li>
             <NavItem to="/myorders">My Orders</NavItem>
           </li>

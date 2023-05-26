@@ -6,7 +6,6 @@ import MyOrder from "./Pages/MyOrder/MyOrder";
 import MyOrders from "./Pages/MyOrders/MyOrders";
 import Signin from "./Pages/Signin/Signin";
 import NotFound from "./Pages/NotFound/NotFound";
-import Navbar from "./components/NavBar/Navbar";
 import ShoppingCartContextProvider from "./Context/ShoppingCartContextProvider";
 import CheckoutSideMenu from "./components/CheckoutSideMenu/CheckoutSideMenu";
 import Login from "./Pages/Login/Login";
@@ -48,9 +47,9 @@ const AppRoutes = () => {
 
 function App() {
   const [registeredUser, setRegisteredUser] = useState("");
-  console.log(registeredUser)
+  
   const [loggedIn, setLoggedIn] = useState(false);
-  console.log(loggedIn)
+  
   const handleRegistered = (username) => {
     setRegisteredUser(username);
     alert(`Usuario ${username} registrado con éxito`);
@@ -71,7 +70,7 @@ function App() {
                 <Signin handleRegistered={handleRegistered} to="/login" />
                 <p>
                   Tenes cuenta ya? Logea{" "}
-                  <button onClick={() => setRegisteredUser("user")}>
+                  <button onClick={() => setRegisteredUser("user")} className="underline text-black font-bold">
                     Aqui
                   </button>
                 </p>
@@ -81,7 +80,7 @@ function App() {
                 <Login handleLoggedIn={handleLoggedIn} />
                 <p>
                   No tenes cuenta? Registra tu cuenta{" "}
-                  <button onClick={() => setRegisteredUser("")}>
+                  <button onClick={() => setRegisteredUser("")} className="underline text-black font-bold">
                     Aqui
                   </button>
                 </p>
@@ -91,7 +90,7 @@ function App() {
         ) : null}
         <BrowserRouter>
           <AppRoutes />
-          <Navbar />
+          
           <CheckoutSideMenu />
         </BrowserRouter>
       </ShoppingCartContextProvider>
